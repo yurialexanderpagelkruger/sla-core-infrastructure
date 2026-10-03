@@ -7,15 +7,15 @@ Con un motor automatizado de copias de seguridad, rutinas de hardening perimetra
 ### 📸 Capturas de pantalla
 
 <div align="center">
-  <table>
+  <table border="0">
     <tr>
-      <td align="center" valign="top" style="padding: 12px; border: 1px solid #30363d; border-radius: 8px;">
-        <p style="margin: 0 0 8px 0;"><b>Versión de PC</b></p>
-        <img src="screenshot.gif" alt="Versión de PC" height="380" style="max-height: 380px; width: auto; border: 1px solid #30363d; border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); display: block;" />
+      <td align="center" valign="bottom">
+        <p><b>Versión de PC</b></p>
+        <img src="screenshot.gif" alt="Versión de PC" width="550" />
       </td>
-      <td align="center" valign="top" style="padding: 12px; border: 1px solid #30363d; border-radius: 8px;">
-        <p style="margin: 0 0 8px 0;"><b>Versión Móvil</b></p>
-        <img src="screenshot2.gif" alt="Versión Móvil" height="380" style="max-height: 380px; width: auto; border: 1px solid #30363d; border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); display: block;" />
+      <td align="center" valign="bottom">
+        <p><b>Versión Móvil</b></p>
+        <img src="screenshot2.gif" alt="Versión Móvil" width="143" />
       </td>
     </tr>
   </table>
