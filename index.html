@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SLA-Core: Arquitectura de Alta Disponibilidad, Disaster Recovery y Migración Crítica para PyMEs.">
+<meta name="author" content="SLA-Core">
+<meta name="theme-color" content="#0b1220">
+<meta property="og:title" content="SLA-Core | Alta Disponibilidad y Disaster Recovery para PyMEs">
+<meta property="og:description" content="Migración, backups automatizados, monitoreo y VPN para empresas que dependen de un servidor.">
+<meta property="og:type" content="website">
+<title>SLA-Core | Alta Disponibilidad y Disaster Recovery para PyMEs</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="site-header" id="header">
+  <div class="container header-inner">
+    <a href="#hero" class="logo" aria-label="SLA-Core inicio">
+      <span class="logo-mark">SC</span>
+      <span class="logo-text">SLA<span>-Core</span></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Navegación principal">
+      <ul>
+        <li><a href="#problema">Problema</a></li>
+        <li><a href="#solucion">Solución</a></li>
+        <li><a href="#arquitectura">Arquitectura</a></li>
+        <li><a href="#metricas">Métricas</a></li>
+        <li><a href="#stack">Stack</a></li>
+        <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="hero">
+  <div class="container hero-inner">
+    <div class="hero-content reveal">
+      <span class="badge">Infraestructura crítica para PyMEs</span>
+      <h1>SLA-Core</h1>
+      <p class="hero-subtitle">Arquitectura de Alta Disponibilidad, Disaster Recovery y Migración Crítica para PyMEs</p>
+      <p class="hero-text">Convertimos un servidor viejo y único en una infraestructura redundante, monitoreada y con backups verificables. Cuando algo falla, el negocio no se detiene.</p>
+      <div class="hero-actions">
+        <a href="#contacto" class="btn btn-primary">Solicitar diagnóstico</a>
+        <a href="#metricas" class="btn btn-ghost">Ver resultados</a>
+      </div>
+      <ul class="hero-tags">
+        <li>Debian / RedHat</li>
+        <li>RAID</li>
+        <li>Backups verificados</li>
+        <li>Zabbix / Prometheus</li>
+        <li>VPN + Hardening</li>
+      </ul>
+    </div>
+    <div class="hero-panel reveal">
+      <div class="terminal">
+        <div class="terminal-bar">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <span class="terminal-title">sla-core@server:~</span>
+        </div>
+        <pre class="terminal-body"><code>$ systemctl status sla-core
+● sla-core.service - SLA High Availability Stack
+   Active: active (running)
+   Uptime: 182 days, 4h 12m
+   Backups: OK (last 00:00, restore tested)
+   Monitoring: OK (Zabbix + Prometheus)
+   VPN: active (WireGuard)
+$ uptime
+ 99.98% SLA · MTTR 12m · RPO 15m</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section problem" id="problema">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-kicker">El escenario</span>
+      <h2>El día que el servidor se cae, el negocio se detiene</h2>
+      <p>Un negocio con todo centralizado en un único servidor antiguo, sin backups confiables ni monitoreo real, está a una falla de distancia de perder días de facturación.</p>
+    </div>
+    <div class="grid grid-3">
+      <article class="card reveal">
+        <h3>Punto único de falla</h3>
+        <p>Un solo equipo sostiene correo, archivos, base de datos y facturación. Si cae, cae todo.</p>
+      </article>
+      <article class="card reveal">
+        <h3>Backups sin verificación</h3>
+        <p>Copias que nunca se restauraron no son backups. Son una promesa que nadie probó.</p>
+      </article>
+      <article class="card reveal">
+        <h3>Sin visibilidad ni alertas</h3>
+        <p>Nadie sabe que algo falla hasta que el cliente lo reporta. El diagnóstico llega tarde.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section solution" id="solucion">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-kicker">La solución</span>
+      <h2>Infraestructura diseñada para no detenerse</h2>
+      <p>Cada capa se construye, se documenta y se prueba. Nada queda librado a la suerte.</p>
+    </div>
+    <div class="grid grid-2">
+      <article class="feature reveal">
+        <span class="feature-index">01</span>
+        <h3>Migración a Debian / RedHat</h3>
+        <p>Servicios separados por función, RAID para tolerancia a discos, sistema base actualizado y reproducible.</p>
+      </article>
+      <article class="feature reveal">
+        <span class="feature-index">02</span>
+        <h3>Backups automatizados</h3>
+        <p>Script propio + cron + rotación por generaciones, con prueba de restauración real programada.</p>
+      </article>
+      <article class="feature reveal">
+        <span class="feature-index">03</span>
+        <h3>Monitoreo y alertas</h3>
+        <p>Zabbix o Prometheus con umbrales, notificaciones y tablero de estado en tiempo real.</p>
+      </article>
+      <article class="feature reveal">
+        <span class="feature-index">04</span>
+        <h3>VPN y hardening</h3>
+        <p>Acceso remoto cifrado, firewall, SSH endurecido y superficie de ataque reducida.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section architecture" id="arquitectura">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-kicker">Antes / Después</span>
+      <h2>Diagrama de arquitectura</h2>
+      <p>Comparativa directa entre el estado inicial y la infraestructura final desplegada.</p>
+    </div>
+    <div class="diagram-wrap reveal">
+      <div class="diagram">
+        <div class="diagram-col">
+          <h3 class="diagram-title before">Antes</h3>
+          <div class="node node-danger">
+            <strong>Servidor único</strong>
+            <span>Hardware antiguo · sin RAID</span>
+          </div>
+          <div class="node node-danger">
+            <strong>Backups manuales</strong>
+            <span>Sin verificación</span>
+          </div>
+          <div class="node node-danger">
+            <strong>Sin monitoreo</strong>
+            <span>Fallas detectadas por el cliente</span>
+          </div>
+          <div class="node node-danger">
+            <strong>Acceso remoto inseguro</strong>
+            <span>Puertos expuestos</span>
+          </div>
+        </div>
+        <div class="diagram-divider" aria-hidden="true"></div>
+        <div class="diagram-col">
+          <h3 class="diagram-title after">Después</h3>
+          <div class="node node-ok">
+            <strong>Servidor con RAID</strong>
+            <span>Debian / RedHat endurecido</span>
+          </div>
+          <div class="node node-ok">
+            <strong>Backups automatizados</strong>
+            <span>Cron + rotación + restore test</span>
+          </div>
+          <div class="node node-ok">
+            <strong>Monitoreo 24/7</strong>
+            <span>Zabbix / Prometheus + alertas</span>
+          </div>
+          <div class="node node-ok">
+            <strong>VPN + hardening</strong>
+            <span>WireGuard · firewall · SSH seguro</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section metrics" id="metricas">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-kicker">Resultados</span>
+      <h2>Informe Antes vs Después</h2>
+      <p>Métricas medidas sobre el entorno productivo tras la migración.</p>
+    </div>
+    <div class="grid grid-4">
+      <div class="metric reveal">
+        <span class="metric-value" data-target="99.98" data-suffix="%" data-decimals="2">0</span>
+        <span class="metric-label">Uptime alcanzado</span>
+      </div>
+      <div class="metric reveal">
+        <span class="metric-value" data-target="12" data-suffix=" min">0</span>
+        <span class="metric-label">Tiempo de restauración (MTTR)</span>
+      </div>
+      <div class="metric reveal">
+        <span class="metric-value" data-target="15" data-suffix=" min">0</span>
+        <span class="metric-label">Pérdida máxima de datos (RPO)</span>
+      </div>
+      <div class="metric reveal">
+        <span class="metric-value" data-target="0" data-suffix=" días">0</span>
+        <span class="metric-label">Caídas no planificadas</span>
+      </div>
+    </div>
+    <div class="compare reveal">
+      <table class="compare-table">
+        <thead>
+          <tr><th>Indicador</th><th>Antes</th><th>Después</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Uptime</td><td class="cell-bad">~92%</td><td class="cell-good">99.98%</td></tr>
+          <tr><td>Tiempo de restauración</td><td class="cell-bad">1–3 días</td><td class="cell-good">12 minutos</td></tr>
+          <tr><td>Backups verificados</td><td class="cell-bad">No</td><td class="cell-good">Sí, semanal</td></tr>
+          <tr><td>Detección de fallas</td><td class="cell-bad">Manual / cliente</td><td class="cell-good">Automática &lt; 1 min</td></tr>
+          <tr><td>Acceso remoto</td><td class="cell-bad">Expuesto</td><td class="cell-good">VPN cifrada</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section stack" id="stack">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-kicker">Tecnología</span>
+      <h2>Stack utilizado</h2>
+    </div>
+    <ul class="stack-list reveal">
+      <li>Debian</li>
+      <li>RedHat</li>
+      <li>mdadm / RAID</li>
+      <li>Cron</li>
+      <li>Bash</li>
+      <li>rsync</li>
+      <li>Zabbix</li>
+      <li>Prometheus</li>
+      <li>Grafana</li>
+      <li>WireGuard</li>
+      <li>UFW / Firewalld</li>
+      <li>Ansible</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section contact" id="contacto">
+  <div class="container contact-inner">
+    <div class="contact-info reveal">
+      <span class="section-kicker">Contacto</span>
+      <h2>¿Tu empresa depende de un solo servidor?</h2>
+      <p>Contame tu situación y te propongo un plan de migración, respaldo y monitoreo adaptado a tu operación.</p>
+      <ul class="contact-points">
+        <li>Diagnóstico inicial sin costo</li>
+        <li>Propuesta con alcance y tiempos claros</li>
+        <li>Documentación y transferencia de conocimiento</li>
+      </ul>
+    </div>
+    <form class="contact-form reveal" id="contactForm" novalidate>
+      <div class="field">
+        <label for="name">Nombre</label>
+        <input type="text" id="name" name="name" required autocomplete="name">
+        <small class="error" data-error-for="name"></small>
+      </div>
+      <div class="field">
+        <label for="email">Email corporativo</label>
+        <input type="email" id="email" name="email" required autocomplete="email">
+        <small class="error" data-error-for="email"></small>
+      </div>
+      <div class="field">
+        <label for="company">Empresa</label>
+        <input type="text" id="company" name="company" autocomplete="organization">
+      </div>
+      <div class="field">
+        <label for="message">Mensaje</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        <small class="error" data-error-for="message"></small>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Enviar consulta</button>
+      <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <span class="logo-mark">SC</span>
+      <span>SLA-Core</span>
+    </div>
+    <p class="footer-copy">Alta Disponibilidad, Disaster Recovery y Migración Crítica para PyMEs.</p>
+    <p class="footer-legal">&copy; <span id="year"></span> SLA-Core. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
