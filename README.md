@@ -8,16 +8,22 @@ Con un motor automatizado de copias de seguridad, rutinas de hardening perimetra
 
 <div align="center">
   <table border="0">
-    <tr>
-      <td align="center" valign="bottom">
-        <p><b>Versión de PC</b></p>
-        <img src="screenshot.gif" alt="Versión de PC" width="550" />
-      </td>
-      <td align="center" valign="bottom">
-        <p><b>Versión Móvil</b></p>
-        <img src="screenshot2.gif" alt="Versión Móvil" width="143" />
-      </td>
-    </tr>
+    <thead>
+      <tr>
+        <th align="center">Versión de PC</th>
+        <th align="center">Versión Móvil</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td align="center" valign="middle">
+          <img src="screenshot.gif" alt="Versión de PC" width="670" />
+        </td>
+        <td align="center" valign="middle">
+          <img src="screenshot2.gif" alt="Versión Móvil" width="174" />
+        </td>
+      </tr>
+    </tbody>
   </table>
 </div>
 
