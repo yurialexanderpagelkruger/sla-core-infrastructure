@@ -1,28 +1,25 @@
-# SLA Core
+# SLA-Core
 
-**SLA Core** es un framework de alta disponibilidad, recuperación ante desastres (Disaster Recovery) y modernización de infraestructura para entornos Linux empresariales. Diseñado específicamente para administradores de sistemas, consultores TI y líderes técnicos a cargo de cargas de trabajo críticas en PyMEs, *SLA-Core* elimina los puntos únicos de falla (SPOF) y reemplaza esquemas manuales precarios por operaciones automatizadas, resilientes y probadas en producción.
+**SLA-Core** es un framework de alta disponibilidad, recuperación ante desastres (Disaster Recovery) y modernización de infraestructura para entornos Linux empresariales. Diseñado específicamente para administradores de sistemas, consultores TI y líderes técnicos a cargo de cargas de trabajo críticas en PyMEs, *SLA-Core* elimina los puntos únicos de falla (SPOF) y reemplaza esquemas manuales precarios por operaciones automatizadas, resilientes y probadas en producción.
 
 Con un motor automatizado de copias de seguridad, rutinas de hardening perimetral, aislamiento de servicios en contenedores y telemetría continua, el proyecto transforma servidores monolíticos vulnerables en infraestructuras de alta disponibilidad, garantizando continuidad de negocio y ventanas de recuperación medibles (RPO/RTO).
 
 ### 📸 Capturas de pantalla
 
-<details>
-  <summary>🖥️ <b>Clic aquí para ver la captura completa de PC</b></summary>
-  <br>
-  <div align="center">
-    <img src="screenshot.png" width="600" alt="PC" />
-  </div>
-</details>
-
-<br>
-
-<details>
-  <summary>📱 <b>Clic aquí para ver la captura completa de Móvil</b></summary>
-  <br>
-  <div align="center">
-    <img src="screenshot2.png" width="300" alt="Móvil" />
-  </div>
-</details>
+<div align="center">
+  <table>
+    <tr>
+      <td align="center" valign="bottom" style="padding: 10px;">
+        <p><b>Versión de PC</b></p>
+        <img src="screenshot.gif" alt="Versión de PC" height="420" style="border: 1px solid #30363d; border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); display: block;" />
+      </td>
+      <td align="center" valign="bottom" style="padding: 10px;">
+        <p><b>Versión Móvil</b></p>
+        <img src="screenshot2.gif" alt="Versión Móvil" height="420" style="border: 1px solid #30363d; border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); display: block;" />
+      </td>
+    </tr>
+  </table>
+</div>
 
 ## ✨ Características Principales
 
