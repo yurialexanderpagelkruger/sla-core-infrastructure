@@ -73,3 +73,7 @@ Desde el despliegue inicial hasta la operación continua, *SLA-Core* implementa 
    ```bash
    git clone [https://github.com/yurialexanderpagelkruger/sla-core-infrastructure.git](https://github.com/yurialexanderpagelkruger/sla-core-infrastructure.git)
    cd sla-core-infrastructure
+
+## 👨‍💻 Autor
+
+Desarrollado por **Yuri Alexander Pagel Krüger**
