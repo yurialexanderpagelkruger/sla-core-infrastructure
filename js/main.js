@@ -11,6 +11,9 @@
   var revealEls = document.querySelectorAll('.reveal');
   var counters = document.querySelectorAll('.metric-value');
 
+  var I18N = window.I18N || { t: function (k) { return k; }, current: 'en' };
+  var t = function (key) { return I18N.t(key); };
+
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
@@ -27,12 +30,19 @@
   window.addEventListener('scroll', onScrollHeader, { passive: true });
   onScrollHeader();
 
+  function updateNavToggleAria() {
+    if (!navToggle) return;
+    var open = nav && nav.classList.contains('open');
+    navToggle.setAttribute('aria-label', open ? t('a11y.menuClose') : t('a11y.menuOpen'));
+  }
+
   function closeMenu() {
     if (!nav || !navToggle) return;
     nav.classList.remove('open');
     navToggle.classList.remove('active');
     navToggle.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('menu-open');
+    updateNavToggleAria();
   }
 
   function openMenu() {
@@ -41,6 +51,7 @@
     navToggle.classList.add('active');
     navToggle.setAttribute('aria-expanded', 'true');
     document.body.classList.add('menu-open');
+    updateNavToggleAria();
   }
 
   if (navToggle) {
@@ -91,15 +102,22 @@
     });
   }
 
+  function getSuffix(el) {
+    var key = el.getAttribute('data-suffix-i18n');
+    if (key) return t('metricSuffix.' + key);
+    return el.getAttribute('data-suffix') || '';
+  }
+
   function animateCounter(el) {
     var target = parseFloat(el.getAttribute('data-target')) || 0;
-    var suffix = el.getAttribute('data-suffix') || '';
+    var suffix = getSuffix(el);
     var decimals = parseInt(el.getAttribute('data-decimals'), 10) || 0;
     var duration = 1500;
     var start = null;
 
     if (target === 0) {
       el.textContent = '0' + suffix;
+      el.dataset.done = '1';
       return;
     }
 
@@ -113,6 +131,7 @@
         requestAnimationFrame(step);
       } else {
         el.textContent = target.toFixed(decimals) + suffix;
+        el.dataset.done = '1';
       }
     }
 
@@ -137,8 +156,9 @@
   } else {
     counters.forEach(function (el) {
       var target = el.getAttribute('data-target') || '0';
-      var suffix = el.getAttribute('data-suffix') || '';
+      var suffix = getSuffix(el);
       el.textContent = target + suffix;
+      el.dataset.done = '1';
     });
   }
 
@@ -158,6 +178,25 @@
   function validEmail(value) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
   }
+
+  function updateDynamicStrings() {
+    var submitBtn = form ? form.querySelector('button[type="submit"]') : null;
+    if (submitBtn && !submitBtn.disabled) {
+      submitBtn.textContent = t('form.submit');
+    }
+
+    counters.forEach(function (el) {
+      if (el.dataset.done === '1' && el.hasAttribute('data-suffix-i18n')) {
+        var target = parseFloat(el.getAttribute('data-target')) || 0;
+        var decimals = parseInt(el.getAttribute('data-decimals'), 10) || 0;
+        el.textContent = target.toFixed(decimals) + getSuffix(el);
+      }
+    });
+
+    updateNavToggleAria();
+  }
+
+  document.addEventListener('i18n:changed', updateDynamicStrings);
 
   if (form) {
     var fields = ['name', 'email', 'message'];
@@ -181,21 +220,21 @@
       var messageVal = (document.getElementById('message').value || '').trim();
 
       if (nameVal.length < 2) {
-        setError('name', 'Ingresá tu nombre.');
+        setError('name', t('form.errName'));
         valid = false;
       } else {
         setError('name', '');
       }
 
       if (!validEmail(emailVal)) {
-        setError('email', 'Ingresá un email válido.');
+        setError('email', t('form.errEmail'));
         valid = false;
       } else {
         setError('email', '');
       }
 
       if (messageVal.length < 10) {
-        setError('message', 'Contame un poco más (mínimo 10 caracteres).');
+        setError('message', t('form.errMessage'));
         valid = false;
       } else {
         setError('message', '');
@@ -203,7 +242,7 @@
 
       if (!valid) {
         if (formStatus) {
-          formStatus.textContent = 'Revisá los campos marcados.';
+          formStatus.textContent = t('form.errGeneric');
           formStatus.classList.add('error-state');
         }
         return;
@@ -212,7 +251,7 @@
       var submitBtn = form.querySelector('button[type="submit"]');
       if (submitBtn) {
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Enviando...';
+        submitBtn.textContent = t('form.sending');
       }
 
       if (formStatus) {
@@ -223,12 +262,12 @@
       setTimeout(function () {
         if (formStatus) {
           formStatus.classList.add('success-state');
-          formStatus.textContent = 'Consulta enviada. Te vamos a contactar a la brevedad.';
+          formStatus.textContent = t('form.success');
         }
         form.reset();
         if (submitBtn) {
           submitBtn.disabled = false;
-          submitBtn.textContent = 'Enviar consulta';
+          submitBtn.textContent = t('form.submit');
         }
       }, 900);
     });

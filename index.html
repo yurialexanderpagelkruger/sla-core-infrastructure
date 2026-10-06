@@ -1,40 +1,51 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="SLA-Core: Arquitectura de Alta Disponibilidad, Disaster Recovery y Migración Crítica para PyMEs.">
+<meta name="description" content="SLA-Core: High Availability, Disaster Recovery and Critical Migration Architecture for SMBs.">
 <meta name="author" content="SLA-Core">
 <meta name="theme-color" content="#0b1220">
-<meta property="og:title" content="SLA-Core | Alta Disponibilidad y Disaster Recovery para PyMEs">
-<meta property="og:description" content="Migración, backups automatizados, monitoreo y VPN para empresas que dependen de un servidor.">
+<meta property="og:title" content="SLA-Core | High Availability and Disaster Recovery for SMBs">
+<meta property="og:description" content="Migration, automated backups, monitoring and VPN for businesses that depend on a single server.">
 <meta property="og:type" content="website">
-<title>SLA-Core | Alta Disponibilidad y Disaster Recovery para PyMEs</title>
+<title>SLA-Core | High Availability and Disaster Recovery for SMBs</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script>
+(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);}else if(window.matchMedia('(prefers-color-scheme: dark)').matches){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();
+</script>
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
 <header class="site-header" id="header">
   <div class="container header-inner">
-    <a href="#hero" class="logo" aria-label="SLA-Core inicio">
+    <a href="#hero" class="logo" data-i18n-aria-label="a11y.home">
       <span class="logo-mark">SC</span>
       <span class="logo-text">SLA<span>-Core</span></span>
     </a>
-    <nav class="nav" id="nav" aria-label="Navegación principal">
+    <nav class="nav" id="nav" aria-label="Main navigation">
       <ul>
-        <li><a href="#problema">Problema</a></li>
-        <li><a href="#solucion">Solución</a></li>
-        <li><a href="#arquitectura">Arquitectura</a></li>
-        <li><a href="#metricas">Métricas</a></li>
-        <li><a href="#stack">Stack</a></li>
-        <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+        <li><a href="#problema" data-i18n="nav.problema">Problem</a></li>
+        <li><a href="#solucion" data-i18n="nav.solucion">Solution</a></li>
+        <li><a href="#arquitectura" data-i18n="nav.arquitectura">Architecture</a></li>
+        <li><a href="#metricas" data-i18n="nav.metricas">Metrics</a></li>
+        <li><a href="#stack" data-i18n="nav.stack">Stack</a></li>
+        <li><a href="#contacto" class="nav-cta" data-i18n="nav.contacto">Contact</a></li>
       </ul>
     </nav>
-    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
+    <div class="controls">
+      <select id="langSelect" class="lang-select" aria-label="Language">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="pt">Português</option>
+      </select>
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+    </div>
+    <button class="nav-toggle" id="navToggle" data-i18n-aria-label="a11y.menuOpen" aria-expanded="false" aria-controls="nav">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -45,13 +56,13 @@
 <section class="hero" id="hero">
   <div class="container hero-inner">
     <div class="hero-content reveal">
-      <span class="badge">Infraestructura crítica para PyMEs</span>
+      <span class="badge" data-i18n="hero.badge">Critical infrastructure for SMBs</span>
       <h1>SLA-Core</h1>
-      <p class="hero-subtitle">Arquitectura de Alta Disponibilidad, Disaster Recovery y Migración Crítica para PyMEs</p>
-      <p class="hero-text">Convertimos un servidor viejo y único en una infraestructura redundante, monitoreada y con backups verificables. Cuando algo falla, el negocio no se detiene.</p>
+      <p class="hero-subtitle" data-i18n="hero.subtitle">High Availability, Disaster Recovery and Critical Migration Architecture for SMBs</p>
+      <p class="hero-text" data-i18n="hero.text">We turn an old, single server into redundant, monitored infrastructure with verifiable backups. When something fails, the business keeps running.</p>
       <div class="hero-actions">
-        <a href="#contacto" class="btn btn-primary">Solicitar diagnóstico</a>
-        <a href="#metricas" class="btn btn-ghost">Ver resultados</a>
+        <a href="#contacto" class="btn btn-primary" data-i18n="hero.ctaDiagnostic">Request a diagnostic</a>
+        <a href="#metricas" class="btn btn-ghost" data-i18n="hero.ctaResults">See results</a>
       </div>
       <ul class="hero-tags">
         <li>Debian / RedHat</li>
@@ -67,7 +78,7 @@
           <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
           <span class="terminal-title">sla-core@server:~</span>
         </div>
-        <pre class="terminal-body"><code>$ systemctl status sla-core
+        <pre class="terminal-body"><code data-i18n="terminal">$ systemctl status sla-core
 ● sla-core.service - SLA High Availability Stack
    Active: active (running)
    Uptime: 182 days, 4h 12m
@@ -84,22 +95,22 @@ $ uptime
 <section class="section problem" id="problema">
   <div class="container">
     <div class="section-head reveal">
-      <span class="section-kicker">El escenario</span>
-      <h2>El día que el servidor se cae, el negocio se detiene</h2>
-      <p>Un negocio con todo centralizado en un único servidor antiguo, sin backups confiables ni monitoreo real, está a una falla de distancia de perder días de facturación.</p>
+      <span class="section-kicker" data-i18n="problem.kicker">The scenario</span>
+      <h2 data-i18n="problem.title">The day the server goes down, the business stops</h2>
+      <p data-i18n="problem.text">A business with everything centralized on a single old server, without reliable backups or real monitoring, is one failure away from losing days of billing.</p>
     </div>
     <div class="grid grid-3">
       <article class="card reveal">
-        <h3>Punto único de falla</h3>
-        <p>Un solo equipo sostiene correo, archivos, base de datos y facturación. Si cae, cae todo.</p>
+        <h3 data-i18n="problem.c1title">Single point of failure</h3>
+        <p data-i18n="problem.c1text">One machine handles email, files, database and billing. If it goes down, everything goes down.</p>
       </article>
       <article class="card reveal">
-        <h3>Backups sin verificación</h3>
-        <p>Copias que nunca se restauraron no son backups. Son una promesa que nadie probó.</p>
+        <h3 data-i18n="problem.c2title">Unverified backups</h3>
+        <p data-i18n="problem.c2text">Copies that were never restored are not backups. They are a promise no one tested.</p>
       </article>
       <article class="card reveal">
-        <h3>Sin visibilidad ni alertas</h3>
-        <p>Nadie sabe que algo falla hasta que el cliente lo reporta. El diagnóstico llega tarde.</p>
+        <h3 data-i18n="problem.c3title">No visibility or alerts</h3>
+        <p data-i18n="problem.c3text">No one knows something is failing until a customer reports it. Diagnosis arrives too late.</p>
       </article>
     </div>
   </div>
@@ -108,30 +119,30 @@ $ uptime
 <section class="section solution" id="solucion">
   <div class="container">
     <div class="section-head reveal">
-      <span class="section-kicker">La solución</span>
-      <h2>Infraestructura diseñada para no detenerse</h2>
-      <p>Cada capa se construye, se documenta y se prueba. Nada queda librado a la suerte.</p>
+      <span class="section-kicker" data-i18n="solution.kicker">The solution</span>
+      <h2 data-i18n="solution.title">Infrastructure designed to keep running</h2>
+      <p data-i18n="solution.text">Every layer is built, documented and tested. Nothing is left to chance.</p>
     </div>
     <div class="grid grid-2">
       <article class="feature reveal">
         <span class="feature-index">01</span>
-        <h3>Migración a Debian / RedHat</h3>
-        <p>Servicios separados por función, RAID para tolerancia a discos, sistema base actualizado y reproducible.</p>
+        <h3 data-i18n="solution.f1title">Migration to Debian / RedHat</h3>
+        <p data-i18n="solution.f1text">Services separated by function, RAID for disk tolerance, updated and reproducible base system.</p>
       </article>
       <article class="feature reveal">
         <span class="feature-index">02</span>
-        <h3>Backups automatizados</h3>
-        <p>Script propio + cron + rotación por generaciones, con prueba de restauración real programada.</p>
+        <h3 data-i18n="solution.f2title">Automated backups</h3>
+        <p data-i18n="solution.f2text">Custom script + cron + generation rotation, with a scheduled real restore test.</p>
       </article>
       <article class="feature reveal">
         <span class="feature-index">03</span>
-        <h3>Monitoreo y alertas</h3>
-        <p>Zabbix o Prometheus con umbrales, notificaciones y tablero de estado en tiempo real.</p>
+        <h3 data-i18n="solution.f3title">Monitoring and alerts</h3>
+        <p data-i18n="solution.f3text">Zabbix or Prometheus with thresholds, notifications and a real-time status dashboard.</p>
       </article>
       <article class="feature reveal">
         <span class="feature-index">04</span>
-        <h3>VPN y hardening</h3>
-        <p>Acceso remoto cifrado, firewall, SSH endurecido y superficie de ataque reducida.</p>
+        <h3 data-i18n="solution.f4title">VPN and hardening</h3>
+        <p data-i18n="solution.f4text">Encrypted remote access, firewall, hardened SSH and a reduced attack surface.</p>
       </article>
     </div>
   </div>
@@ -140,49 +151,49 @@ $ uptime
 <section class="section architecture" id="arquitectura">
   <div class="container">
     <div class="section-head reveal">
-      <span class="section-kicker">Antes / Después</span>
-      <h2>Diagrama de arquitectura</h2>
-      <p>Comparativa directa entre el estado inicial y la infraestructura final desplegada.</p>
+      <span class="section-kicker" data-i18n="arch.kicker">Before / After</span>
+      <h2 data-i18n="arch.title">Architecture diagram</h2>
+      <p data-i18n="arch.text">Direct comparison between the initial state and the final deployed infrastructure.</p>
     </div>
     <div class="diagram-wrap reveal">
       <div class="diagram">
         <div class="diagram-col">
-          <h3 class="diagram-title before">Antes</h3>
+          <h3 class="diagram-title before" data-i18n="arch.before">Before</h3>
           <div class="node node-danger">
-            <strong>Servidor único</strong>
-            <span>Hardware antiguo · sin RAID</span>
+            <strong data-i18n="arch.before1title">Single server</strong>
+            <span data-i18n="arch.before1desc">Old hardware · no RAID</span>
           </div>
           <div class="node node-danger">
-            <strong>Backups manuales</strong>
-            <span>Sin verificación</span>
+            <strong data-i18n="arch.before2title">Manual backups</strong>
+            <span data-i18n="arch.before2desc">No verification</span>
           </div>
           <div class="node node-danger">
-            <strong>Sin monitoreo</strong>
-            <span>Fallas detectadas por el cliente</span>
+            <strong data-i18n="arch.before3title">No monitoring</strong>
+            <span data-i18n="arch.before3desc">Failures detected by the customer</span>
           </div>
           <div class="node node-danger">
-            <strong>Acceso remoto inseguro</strong>
-            <span>Puertos expuestos</span>
+            <strong data-i18n="arch.before4title">Insecure remote access</strong>
+            <span data-i18n="arch.before4desc">Exposed ports</span>
           </div>
         </div>
         <div class="diagram-divider" aria-hidden="true"></div>
         <div class="diagram-col">
-          <h3 class="diagram-title after">Después</h3>
+          <h3 class="diagram-title after" data-i18n="arch.after">After</h3>
           <div class="node node-ok">
-            <strong>Servidor con RAID</strong>
-            <span>Debian / RedHat endurecido</span>
+            <strong data-i18n="arch.after1title">Server with RAID</strong>
+            <span data-i18n="arch.after1desc">Hardened Debian / RedHat</span>
           </div>
           <div class="node node-ok">
-            <strong>Backups automatizados</strong>
-            <span>Cron + rotación + restore test</span>
+            <strong data-i18n="arch.after2title">Automated backups</strong>
+            <span data-i18n="arch.after2desc">Cron + rotation + restore test</span>
           </div>
           <div class="node node-ok">
-            <strong>Monitoreo 24/7</strong>
-            <span>Zabbix / Prometheus + alertas</span>
+            <strong data-i18n="arch.after3title">24/7 monitoring</strong>
+            <span data-i18n="arch.after3desc">Zabbix / Prometheus + alerts</span>
           </div>
           <div class="node node-ok">
-            <strong>VPN + hardening</strong>
-            <span>WireGuard · firewall · SSH seguro</span>
+            <strong data-i18n="arch.after4title">VPN + hardening</strong>
+            <span data-i18n="arch.after4desc">WireGuard · firewall · secure SSH</span>
           </div>
         </div>
       </div>
@@ -193,39 +204,63 @@ $ uptime
 <section class="section metrics" id="metricas">
   <div class="container">
     <div class="section-head reveal">
-      <span class="section-kicker">Resultados</span>
-      <h2>Informe Antes vs Después</h2>
-      <p>Métricas medidas sobre el entorno productivo tras la migración.</p>
+      <span class="section-kicker" data-i18n="metrics.kicker">Results</span>
+      <h2 data-i18n="metrics.title">Before vs After report</h2>
+      <p data-i18n="metrics.text">Metrics measured on the production environment after migration.</p>
     </div>
     <div class="grid grid-4">
       <div class="metric reveal">
         <span class="metric-value" data-target="99.98" data-suffix="%" data-decimals="2">0</span>
-        <span class="metric-label">Uptime alcanzado</span>
+        <span class="metric-label" data-i18n="metrics.m1label">Achieved uptime</span>
       </div>
       <div class="metric reveal">
-        <span class="metric-value" data-target="12" data-suffix=" min">0</span>
-        <span class="metric-label">Tiempo de restauración (MTTR)</span>
+        <span class="metric-value" data-target="12" data-suffix-i18n="min" data-decimals="0">0</span>
+        <span class="metric-label" data-i18n="metrics.m2label">Restore time (MTTR)</span>
       </div>
       <div class="metric reveal">
-        <span class="metric-value" data-target="15" data-suffix=" min">0</span>
-        <span class="metric-label">Pérdida máxima de datos (RPO)</span>
+        <span class="metric-value" data-target="15" data-suffix-i18n="min" data-decimals="0">0</span>
+        <span class="metric-label" data-i18n="metrics.m3label">Maximum data loss (RPO)</span>
       </div>
       <div class="metric reveal">
-        <span class="metric-value" data-target="0" data-suffix=" días">0</span>
-        <span class="metric-label">Caídas no planificadas</span>
+        <span class="metric-value" data-target="0" data-suffix-i18n="days" data-decimals="0">0</span>
+        <span class="metric-label" data-i18n="metrics.m4label">Unplanned outages</span>
       </div>
     </div>
     <div class="compare reveal">
       <table class="compare-table">
         <thead>
-          <tr><th>Indicador</th><th>Antes</th><th>Después</th></tr>
+          <tr>
+            <th data-i18n="table.indicator">Indicator</th>
+            <th data-i18n="table.before">Before</th>
+            <th data-i18n="table.after">After</th>
+          </tr>
         </thead>
         <tbody>
-          <tr><td>Uptime</td><td class="cell-bad">~92%</td><td class="cell-good">99.98%</td></tr>
-          <tr><td>Tiempo de restauración</td><td class="cell-bad">1–3 días</td><td class="cell-good">12 minutos</td></tr>
-          <tr><td>Backups verificados</td><td class="cell-bad">No</td><td class="cell-good">Sí, semanal</td></tr>
-          <tr><td>Detección de fallas</td><td class="cell-bad">Manual / cliente</td><td class="cell-good">Automática &lt; 1 min</td></tr>
-          <tr><td>Acceso remoto</td><td class="cell-bad">Expuesto</td><td class="cell-good">VPN cifrada</td></tr>
+          <tr>
+            <td data-i18n="table.row1label">Uptime</td>
+            <td class="cell-bad" data-i18n="table.row1before">~92%</td>
+            <td class="cell-good" data-i18n="table.row1after">99.98%</td>
+          </tr>
+          <tr>
+            <td data-i18n="table.row2label">Restore time</td>
+            <td class="cell-bad" data-i18n="table.row2before">1–3 days</td>
+            <td class="cell-good" data-i18n="table.row2after">12 minutes</td>
+          </tr>
+          <tr>
+            <td data-i18n="table.row3label">Verified backups</td>
+            <td class="cell-bad" data-i18n="table.row3before">No</td>
+            <td class="cell-good" data-i18n="table.row3after">Yes, weekly</td>
+          </tr>
+          <tr>
+            <td data-i18n="table.row4label">Failure detection</td>
+            <td class="cell-bad" data-i18n="table.row4before">Manual / customer</td>
+            <td class="cell-good" data-i18n="table.row4after">Automatic &lt; 1 min</td>
+          </tr>
+          <tr>
+            <td data-i18n="table.row5label">Remote access</td>
+            <td class="cell-bad" data-i18n="table.row5before">Exposed</td>
+            <td class="cell-good" data-i18n="table.row5after">Encrypted VPN</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -235,8 +270,8 @@ $ uptime
 <section class="section stack" id="stack">
   <div class="container">
     <div class="section-head reveal">
-      <span class="section-kicker">Tecnología</span>
-      <h2>Stack utilizado</h2>
+      <span class="section-kicker" data-i18n="stack.kicker">Technology</span>
+      <h2 data-i18n="stack.title">Stack used</h2>
     </div>
     <ul class="stack-list reveal">
       <li>Debian</li>
@@ -258,36 +293,36 @@ $ uptime
 <section class="section contact" id="contacto">
   <div class="container contact-inner">
     <div class="contact-info reveal">
-      <span class="section-kicker">Contacto</span>
-      <h2>¿Tu empresa depende de un solo servidor?</h2>
-      <p>Contame tu situación y te propongo un plan de migración, respaldo y monitoreo adaptado a tu operación.</p>
+      <span class="section-kicker" data-i18n="contact.kicker">Contact</span>
+      <h2 data-i18n="contact.title">Does your business depend on a single server?</h2>
+      <p data-i18n="contact.text">Tell me your situation and I'll propose a migration, backup and monitoring plan tailored to your operation.</p>
       <ul class="contact-points">
-        <li>Diagnóstico inicial sin costo</li>
-        <li>Propuesta con alcance y tiempos claros</li>
-        <li>Documentación y transferencia de conocimiento</li>
+        <li data-i18n="contact.p1">Free initial diagnostic</li>
+        <li data-i18n="contact.p2">Proposal with clear scope and timelines</li>
+        <li data-i18n="contact.p3">Documentation and knowledge transfer</li>
       </ul>
     </div>
     <form class="contact-form reveal" id="contactForm" novalidate>
       <div class="field">
-        <label for="name">Nombre</label>
+        <label for="name" data-i18n="form.name">Name</label>
         <input type="text" id="name" name="name" required autocomplete="name">
         <small class="error" data-error-for="name"></small>
       </div>
       <div class="field">
-        <label for="email">Email corporativo</label>
+        <label for="email" data-i18n="form.email">Corporate email</label>
         <input type="email" id="email" name="email" required autocomplete="email">
         <small class="error" data-error-for="email"></small>
       </div>
       <div class="field">
-        <label for="company">Empresa</label>
+        <label for="company" data-i18n="form.company">Company</label>
         <input type="text" id="company" name="company" autocomplete="organization">
       </div>
       <div class="field">
-        <label for="message">Mensaje</label>
+        <label for="message" data-i18n="form.message">Message</label>
         <textarea id="message" name="message" rows="4" required></textarea>
         <small class="error" data-error-for="message"></small>
       </div>
-      <button type="submit" class="btn btn-primary btn-block">Enviar consulta</button>
+      <button type="submit" class="btn btn-primary btn-block" data-i18n="form.submit">Send inquiry</button>
       <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
     </form>
   </div>
@@ -301,11 +336,13 @@ $ uptime
       <span class="logo-mark">SC</span>
       <span>SLA-Core</span>
     </div>
-    <p class="footer-copy">Alta Disponibilidad, Disaster Recovery y Migración Crítica para PyMEs.</p>
-    <p class="footer-legal">&copy; <span id="year"></span> SLA-Core. Todos los derechos reservados.</p>
+    <p class="footer-copy" data-i18n="footer.copy">High Availability, Disaster Recovery and Critical Migration for SMBs.</p>
+    <p class="footer-legal">&copy; <span id="year"></span> SLA-Core. <span data-i18n="footer.legal">All rights reserved.</span></p>
   </div>
 </footer>
 
+<script src="js/i18n.js"></script>
+<script src="js/theme.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

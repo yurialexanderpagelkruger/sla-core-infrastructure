@@ -1,79 +1,93 @@
 # SLA-Core
 
-**SLA-Core** es un framework de alta disponibilidad, recuperación ante desastres (Disaster Recovery) y modernización de infraestructura para entornos Linux empresariales. Diseñado específicamente para administradores de sistemas, consultores TI y líderes técnicos a cargo de cargas de trabajo críticas en PyMEs, *SLA-Core* elimina los puntos únicos de falla (SPOF) y reemplaza esquemas manuales precarios por operaciones automatizadas, resilientes y probadas en producción.
+**SLA-Core** is a high-availability, disaster recovery (DR), and infrastructure modernization framework designed for enterprise Linux environments. Built specifically for systems administrators, IT consultants, and technical leads overseeing mission-critical workloads in SMBs, *SLA-Core* eliminates single points of failure (SPOF) and replaces precarious manual processes with automated, resilient, and production-tested operations.
 
-Con un motor automatizado de copias de seguridad, rutinas de hardening perimetral, aislamiento de servicios en contenedores y telemetría continua, el proyecto transforma servidores monolíticos vulnerables en infraestructuras de alta disponibilidad, garantizando continuidad de negocio y ventanas de recuperación medibles (RPO/RTO).
+Featuring an automated backup engine, perimeter hardening routines, containerized service isolation, and continuous telemetry, the framework transforms vulnerable monolithic servers into high-availability infrastructures, guaranteeing business continuity and measurable recovery windows (RPO/RTO).
 
-### 📸 Capturas de pantalla
+---
+
+### 📸 Screenshots
 
 <div align="center">
   <table border="0">
     <thead>
       <tr>
-        <th align="center">Versión de PC</th>
-        <th align="center">Versión Móvil</th>
+        <th align="center">Desktop Version</th>
+        <th align="center">Mobile Version</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td align="center" valign="middle">
-          <img src="screenshot.gif" alt="Versión de PC" width="612" />
+          <img src="screenshot.gif" alt="Desktop Version" width="612" />
         </td>
         <td align="center" valign="middle">
-          <img src="screenshot2.gif" alt="Versión Móvil" width="159" />
+          <img src="screenshot2.gif" alt="Mobile Version" width="159" />
         </td>
       </tr>
     </tbody>
   </table>
 </div>
 
-## ✨ Características Principales
+---
 
-* **Almacenamiento Zero-SPOF:** Redundancia de almacenamiento mediante RAID 1 por software (`mdadm`) o esquemas ZFS espejo, previniendo caídas totales de servicio por falla física de discos.
+## ✨ Key Features
 
-* **Motor Automatizado de Backups Multi-Destino:** Script orquestador robusto en Bash con compresión Zstandard (`zstd`), políticas locales de retención, firmas criptográficas SHA-256 y sincronización remota cifrada (`rsync`).
+* **Multi-Language Support (i18n):** Web management interface fully localized across 3 languages: English, Spanish, and Portuguese, ensuring seamless operation for international operations teams.
 
-* **Verificación Auditada de Disaster Recovery (DR):** Herramienta dedicada de validación no destructiva (`test_restore.sh`) que verifica la integridad del archivo y el flujo de restauración de bases de datos antes de que ocurra una contingencia real.
+* **Adaptive Theming (Dark & Light Mode):** Dynamic UI theme switching between Dark and Light modes, optimized for prolonged monitoring sessions in Network Operations Centers (NOC) and high-ambient light environments.
 
-* **Hardening Perimetral y Optimización de Kernel:** Script de seguridad base con directivas estrictas de red a nivel de kernel vía `sysctl`, deshabilitación de acceso directo a root por SSH, parches automáticos de seguridad (`unattended-upgrades`) y mitigación de intrusiones mediante `fail2ban`.
+* **Zero-SPOF Storage Architecture:** Block storage redundancy using software RAID 1 (`mdadm`) or mirrored ZFS pools, preventing complete service downtime caused by physical disk failures.
 
-* **Túnel de Administración Cifrado:** Configuración de VPN WireGuard dedicada que aísla los puertos de administración técnica (SSH, bases de datos, métricas) fuera del alcance de la red pública.
+* **Automated Multi-Target Backup Engine:** Resilient Bash orchestrator featuring Zstandard (`zstd`) compression, local retention policies, cryptographic SHA-256 signatures, and encrypted remote synchronization (`rsync`).
 
-* **Telemetría Integral y Alertas Proactivas:** Pila preconfigurada de Prometheus y Node Exporter que monitoriza el rendimiento del host, saturación de disco, consumo de memoria y estado de servicios con umbrales de alerta predefinidos.
+* **Audited Disaster Recovery (DR) Verification:** Dedicated non-destructive validation utility (`test_restore.sh`) that verifies archive integrity and dry-run database restoration pipelines prior to genuine contingency events.
 
-## ⚙️ ¿Qué Hace? (Módulos Disponibles)
+* **Perimeter Hardening & Kernel Optimization:** Baseline security profile applying strict kernel-level network directives via `sysctl`, SSH root direct login deactivation, automated security patching (`unattended-upgrades`), and intrusion mitigation via `fail2ban`.
 
-Desde el despliegue inicial hasta la operación continua, *SLA-Core* implementa los siguientes componentes:
+* **Encrypted Administration Tunnel:** Dedicated WireGuard VPN configuration that isolates administrative ports (SSH, databases, metrics endpoints) entirely outside public network reach.
 
-1. **Hardening de Sistema y Defensa Perimetral (`scripts/system_hardening.sh`):** Configura protecciones TCP/IP en el kernel, revoca autenticación SSH por contraseña, activa cortafuegos UFW y levanta jaulas de protección con Fail2ban.
+* **Comprehensive Telemetry & Proactive Alerting:** Preconfigured Prometheus and Node Exporter stack monitoring host performance, disk saturation, memory consumption, and service status against predefined alert thresholds.
 
-2. **Motor Automatizado de Backups (`scripts/backup_engine.sh`):** Exporta bases de datos en caliente, empaqueta volúmenes Docker, comprime mediante `zstd`, genera manifiestos de integridad SHA-256, sincroniza a un servidor externo y purga copias antiguas.
+---
 
-3. **Prueba de Integridad de Disaster Recovery (`scripts/test_restore.sh`):** Evalúa carpetas de respaldo contra sus firmas criptográficas y valida la descompresión sin alterar las operaciones en ejecución.
+## ⚙️ What It Does (Available Modules)
 
-4. **Recolección de Métricas y Monitoreo (`docker-compose.yml` y `prometheus/`):** Despliega Prometheus y Node Exporter en contenedores con reglas de alerta listas para detectar saturación de almacenamiento, picos de memoria RAM o caída de nodos.
+From initial deployment to continuous runtime orchestration, *SLA-Core* deploys the following core components:
 
-5. **Acceso Remoto Seguro (`wireguard/wg0.conf`):** Canaliza todo el tráfico administrativo dentro de una red privada virtual punto a punto autenticada mediante llaves asimétricas.
+1. **System Hardening & Perimeter Defense (`scripts/system_hardening.sh`):** Configures kernel TCP/IP mitigations, disables password-based SSH authentication, enables UFW firewall policies, and enforces intrusion protection jails with Fail2ban.
 
-## 🛠️ Tecnologías Utilizadas
+2. **Management Dashboard & UI Theming Layer:** Responsive web operations panel delivering client-side localization across 3 languages (English, Spanish, Portuguese) alongside smooth Dark/Light mode theme switching.
 
-* **Sistemas Operativos:** Debian GNU/Linux 12 (Bookworm) / Red Hat Enterprise Linux 9 (RHEL).
+3. **Automated Backup Engine (`scripts/backup_engine.sh`):** Performs hot database dumps, packages Docker volumes, compresses payloads via `zstd`, generates SHA-256 checksum manifests, syncs with remote offsite storage, and enforces retention lifecycle policies.
 
-* **Contenedores:** Docker y Docker Compose v2.
+4. **Disaster Recovery Integrity Test (`scripts/test_restore.sh`):** Evaluates backup archives against cryptographic signatures and tests archive decompression without affecting running production services.
 
-* **Automatización y Scripts:** Bash (estándar `set -Eeuo pipefail`), GNU Coreutils, `zstd`.
+5. **Metrics Telemetry & Alerting (`docker-compose.yml` & `prometheus/`):** Runs Prometheus and Node Exporter inside isolated containers configured with alert rules targeting storage saturation, RAM consumption spikes, or node dropouts.
 
-* **Monitoreo y Métricas:** Prometheus TSDB y Node Exporter.
+6. **Secure Remote Access (`wireguard/wg0.conf`):** Encapsulates all administrative ingress traffic inside an asymmetric-key authenticated peer-to-peer virtual private network.
 
-* **Seguridad y Redes:** WireGuard VPN, UFW / iptables, Fail2ban, OpenSSH.
+---
 
-## 🚀 Instalación y Uso
+## 🛠️ Tech Stack
 
-1. Clonar el repositorio en el servidor destino:
+* **Operating Systems:** Debian GNU/Linux 12 (Bookworm) / Red Hat Enterprise Linux 9 (RHEL).
+* **Containers & Orchestration:** Docker and Docker Compose v2.
+* **Frontend & Theming:** Semantic HTML5, CSS3 with responsive Dark and Light mode design tokens, and JavaScript.
+* **Internationalization:** Multi-language catalog support (English, Spanish, Portuguese).
+* **Automation & Scripting:** Enterprise Bash (`set -Eeuo pipefail` standard), GNU Coreutils, `zstd`.
+* **Telemetry & Monitoring:** Prometheus TSDB and Node Exporter.
+* **Security & Networking:** WireGuard VPN, UFW / iptables, Fail2ban, OpenSSH.
+
+---
+
+## 🚀 Installation and Usage
+
+1. Clone the repository onto the target server:
    ```bash
    git clone [https://github.com/yurialexanderpagelkruger/sla-core-infrastructure.git](https://github.com/yurialexanderpagelkruger/sla-core-infrastructure.git)
    cd sla-core-infrastructure
 
-## 👨‍💻 Autor
+## 👨‍💻 Author
 
-Desarrollado por **Yuri Alexander Pagel Krüger**
+Developed by **Yuri Alexander Pagel Krüger**
