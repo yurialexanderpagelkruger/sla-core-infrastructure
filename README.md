@@ -19,10 +19,10 @@ Featuring an automated backup engine, perimeter hardening routines, containerize
     <tbody>
       <tr>
         <td align="center" valign="middle">
-          <img src="screenshot.gif" alt="Desktop Version" width="612" />
+          <img src="screenshot.gif" alt="Desktop Version" width="589" />
         </td>
         <td align="center" valign="middle">
-          <img src="screenshot2.gif" alt="Mobile Version" width="159" />
+          <img src="screenshot2.gif" alt="Mobile Version" width="186" />
         </td>
       </tr>
     </tbody>
